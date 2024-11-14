@@ -1,30 +1,30 @@
 # Application de suivi du cours des devises
-Réalisée par :
-    - Thomas CATROS
-    - Baptiste JULIENNE
-    - Noé CHABANON
+Réalisée par :  
+    - Thomas CATROS  
+    - Baptiste JULIENNE  
+    - Noé CHABANON  
 
 ## Fonctionnement
 ### Installation
-Pour installer les dépendances et bibliothèques requises, vous pouvez exécuter la commande suivante :
+Pour installer les dépendances et bibliothèques requises, vous pouvez exécuter la commande suivante :  
     `make init`
 
-Si vous n'avez pas make d'installé, vous pouvez exécuter :
+Si vous n'avez pas make d'installé, vous pouvez exécuter :  
     `pip install -r requirements.txt`
 
 
 ### Lancement de l'application 
-Pour lancer l'application, il faut exécuter cette commande :
+Pour lancer l'application, il faut exécuter cette commande :  
     `make start`
 
 Si vous n'avez pas make, vous aurez besoin de 2 terminaux pour lancer la base de données et le serveur.
-Voici les commandes à exécuter :
-    `docker compose up`
+Voici les commandes à exécuter :  
+    `docker compose up`  
     `py manage.py runserver` OU `python manage.py runserver` (selon votre OS)
 
 
 ### Arrêt de l'application
-Pour arrêter l'application il suffit d'exécuter :
+Pour arrêter l'application il suffit d'exécuter :  
     `make stop`
 
 
