@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CurrencySelector from './components/SelectionCurrency';
@@ -33,7 +34,19 @@ function App() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, backgroundColor: '#f4f6f8', minHeight: '100vh' }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        minHeight: '100vh',
+        backgroundImage: 'url(images/background.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
       <AppBar position="static" color="primary">
         <Toolbar>
           <CurrencyExchangeIcon fontSize="large" style={{ marginRight: '10px' }} />
@@ -46,7 +59,7 @@ function App() {
       <Container maxWidth="lg" sx={{ marginTop: 4 }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
-            <Card>
+            <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
               <CardContent>
                 <Typography variant="h5" gutterBottom>
                   Sélectionner une Devise
@@ -61,7 +74,7 @@ function App() {
 
           <Grid item xs={12} md={8}>
             {selectedCurrency && (
-              <Card>
+              <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
                 <CardContent>
                   <Typography variant="h5" gutterBottom>
                     Évolution du Taux de Change ({selectedCurrency})
@@ -76,7 +89,7 @@ function App() {
           </Grid>
 
           <Grid item xs={12}>
-            <Card>
+            <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
               <CardContent>
                 <Typography variant="h5" gutterBottom>
                   Charger un Fichier CSV
@@ -88,7 +101,7 @@ function App() {
         </Grid>
       </Container>
 
-      <footer style={{ marginTop: '20px', textAlign: 'center', padding: '10px 0', backgroundColor: '#3f51b5', color: '#ffffff' }}>
+      <footer className="app-footer">
         <Typography variant="body2">
           ©Thomas Catros, Noé Chabanon, Baptiste Julienne
         </Typography>
