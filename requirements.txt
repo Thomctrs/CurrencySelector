@@ -3,3 +3,5 @@ docker-compose
 django
 djangorestframework
 psycopg[binary]
+pandas
+openpyxl
