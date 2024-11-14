@@ -1,2 +1,5 @@
 docker
 docker-compose
+django
+djangorestframework
+psycopg[binary]
