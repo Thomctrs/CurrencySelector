@@ -2,7 +2,7 @@ init:
 	pip install -r requirements.txt
 
 launch-database:
-	docker compose up -d  # -d lance en mode détaché pour continuer
+	docker compose up -d 
 
 wait-for-database:
 	until docker compose exec db pg_isready -U postgres; do \
