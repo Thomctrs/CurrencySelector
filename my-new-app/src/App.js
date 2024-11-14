@@ -4,7 +4,16 @@ import axios from 'axios';
 import CurrencySelector from './components/SelectionCurrency';
 import Chart from './components/Graph';
 import CSVUploader from './components/CsvUpload';
-import { AppBar, Toolbar, Typography, Container, Grid, Card, CardContent, Box } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  Box,
+} from '@mui/material';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import './App.css';
 
@@ -14,21 +23,26 @@ function App() {
   const [currencyData, setCurrencyData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/devise')
+    // Fetch currencies on mount
+    axios
+      .get('http://localhost:8000/api/devise')
       .then((response) => setCurrencies(response.data))
       .catch((error) => console.error(error));
   }, []);
 
   const handleSelectCurrency = (currency) => {
     setSelectedCurrency(currency);
-
-    axios.get(`http://localhost:8000/api/devise/${currency}`)
+    // Fetch data for the selected currency
+    axios
+      .get(`http://localhost:8000/api/devise/${currency}`)
       .then((response) => setCurrencyData(response.data))
       .catch((error) => console.error(error));
   };
 
   const handleUploadSuccess = () => {
-    axios.get('http://localhost:8000/api/devise')
+    // Refresh currencies after successful CSV upload
+    axios
+      .get('http://localhost:8000/api/devise')
       .then((response) => setCurrencies(response.data))
       .catch((error) => console.error(error));
   };
@@ -64,9 +78,9 @@ function App() {
                 <Typography variant="h5" gutterBottom>
                   Sélectionner une Devise
                 </Typography>
-                <CurrencySelector 
-                  currencies={currencies} 
-                  onSelectCurrency={handleSelectCurrency} 
+                <CurrencySelector
+                  currencies={currencies}
+                  onSelectCurrency={handleSelectCurrency}
                 />
               </CardContent>
             </Card>
@@ -79,10 +93,7 @@ function App() {
                   <Typography variant="h5" gutterBottom>
                     Évolution du Taux de Change ({selectedCurrency})
                   </Typography>
-                  <Chart 
-                    data={currencyData} 
-                    label={selectedCurrency} 
-                  />
+                  <Chart data={currencyData} label={selectedCurrency} />
                 </CardContent>
               </Card>
             )}
@@ -102,9 +113,7 @@ function App() {
       </Container>
 
       <footer className="app-footer">
-        <Typography variant="body2">
-          ©Thomas Catros, Noé Chabanon, Baptiste Julienne
-        </Typography>
+        <Typography variant="body2">©Thomas Catros, Noé Chabanon, Baptiste Julienne</Typography>
       </footer>
     </Box>
   );
