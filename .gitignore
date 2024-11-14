@@ -1,2 +1,4 @@
 node_modules
 .env
+api/__pycache__/
+projetRecherche/__pycache__/
