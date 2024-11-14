@@ -14,7 +14,7 @@ function App() {
   const [currencyData, setCurrencyData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/currencies')
+    axios.get('http://localhost:8000/api/devise')
       .then((response) => setCurrencies(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -22,13 +22,13 @@ function App() {
   const handleSelectCurrency = (currency) => {
     setSelectedCurrency(currency);
 
-    axios.get(`http://localhost:5000/api/currencies/${currency}`)
+    axios.get(`http://localhost:8000/api/devise/${currency}`)
       .then((response) => setCurrencyData(response.data))
       .catch((error) => console.error(error));
   };
 
   const handleUploadSuccess = () => {
-    axios.get('http://localhost:5000/api/currencies')
+    axios.get('http://localhost:8000/api/devise')
       .then((response) => setCurrencies(response.data))
       .catch((error) => console.error(error));
   };

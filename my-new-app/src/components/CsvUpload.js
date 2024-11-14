@@ -13,7 +13,7 @@ const CSVUploader = ({ onUploadSuccess }) => {
     formData.append('file', file);
 
     try {
-      await axios.post('http://localhost:5000/api/upload', formData, {
+      await axios.post('http://localhost:5000/api/devise/create', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       onUploadSuccess();
