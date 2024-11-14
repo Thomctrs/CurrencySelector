@@ -93,6 +93,28 @@ body {
     border-radius: 5px;
     outline: none;
   }
+
+
+  .MuiAppBar-root {
+    background-color: #3f51b5;
+  }
+
+  .MuiCard-root {
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .MuiButton-containedPrimary {
+    background-color: #3f51b5;
+  }
+
+  .MuiTypography-h5 {
+    font-weight: bold;
+  }
+
+  .MuiDataGrid-root {
+    background-color: #fff;
+  }
   
   .upload-button {
     padding: 10px 20px;
