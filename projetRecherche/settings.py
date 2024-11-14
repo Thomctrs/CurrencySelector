@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-f&gyal-8q3+0@y(gj8k!t_49t9r^1$9yo2f1o4h7qj(z49lbr^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["kubernetes.docker.internal"]
 
 
 # Application definition
