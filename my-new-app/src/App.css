@@ -1,0 +1,167 @@
+/* src/App.css */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+  }
+  
+  .App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .app-header {
+    background-color: #4bc0c0;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-main {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .app-footer {
+    background-color: rgba(63, 81, 181, 0.9); /* Semi-transparent footer */
+    padding: 15px;
+    color: white;
+    font-size: 0.9em;
+    text-align: center;
+  }
+  
+  .currency-selector {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .currency-selector h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+  }
+  
+  .currency-dropdown {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #4bc0c0;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .currency-dropdown:focus {
+    border-color: #36a2eb;
+  }
+  
+  .chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .chart-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4bc0c0;
+  }
+  
+  .csv-uploader {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .csv-uploader h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #4bc0c0;
+  }
+  
+  .csv-input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #4bc0c0;
+    border-radius: 5px;
+    outline: none;
+  }
+
+
+  .MuiAppBar-root {
+    background-color: #3f51b5;
+  }
+
+  .MuiCard-root {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent card */
+  }
+
+  .MuiButton-containedPrimary {
+    background-color: #3f51b5;
+  }
+
+  .MuiTypography-h5 {
+    font-weight: bold;
+  }
+
+  .MuiDataGrid-root {
+    background-color: #fff;
+  }
+  
+  .upload-button {
+    padding: 10px 20px;
+    background-color: #36a2eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .upload-button:disabled {
+    background-color: #a0c4eb;
+    cursor: not-allowed;
+  }
+  
+  .upload-button:hover:not(:disabled) {
+    background-color: #2b8ad9;
+  }
+  
+  .upload-button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  
+  /* Responsivité */
+  @media (max-width: 768px) {
+    .app-main {
+      padding: 10px;
+    }
+  
+    .currency-selector h3,
+    .csv-uploader h3,
+    .chart-container h3 {
+      font-size: 1.2em;
+    }
+  
+    .currency-dropdown,
+    .csv-input,
+    .upload-button {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+  
