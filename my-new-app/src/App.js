@@ -18,33 +18,33 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import './App.css';
 
 function App() {
-  const [currencies, setCurrencies] = useState([]);
-  const [selectedCurrency, setSelectedCurrency] = useState('');
-  const [currencyData, setCurrencyData] = useState([]);
+  const [currencies, setCurrencies] = useState([]); // Liste des devises
+  const [selectedCurrency, setSelectedCurrency] = useState(''); // Devise sélectionnée
+  const [currencyData, setCurrencyData] = useState([]); // Données de la devise sélectionnée
 
   useEffect(() => {
-    // Fetch currencies on mount
+    // Récupère les devises disponibles lors du chargement de la page
     axios
       .get('http://localhost:8000/api/devise')
       .then((response) => setCurrencies(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error('Erreur lors de la récupération des devises:', error));
   }, []);
 
   const handleSelectCurrency = (currency) => {
     setSelectedCurrency(currency);
-    // Fetch data for the selected currency
+    // Récupère les données de la devise sélectionnée
     axios
-      .get(`http://localhost:8000/api/devise/${currency}`)
+      .get(`http://localhost:8000/api/devise?pair=${currency}`)
       .then((response) => setCurrencyData(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error('Erreur lors de la récupération des données:', error));
   };
 
   const handleUploadSuccess = () => {
-    // Refresh currencies after successful CSV upload
+    // Rafraîchit la liste des devises après l'upload d'un fichier CSV
     axios
       .get('http://localhost:8000/api/devise')
       .then((response) => setCurrencies(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error('Erreur lors du rafraîchissement des devises:', error));
   };
 
   return (
@@ -113,7 +113,7 @@ function App() {
       </Container>
 
       <footer className="app-footer">
-        <Typography variant="body2">©Thomas Catros, Noé Chabanon, Baptiste Julienne</Typography>
+        <Typography variant="body2">©Thomas Catros, Noé Chabanon, Baptiste Julienne, 2024</Typography>
       </footer>
     </Box>
   );

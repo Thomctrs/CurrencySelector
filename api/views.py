@@ -10,40 +10,36 @@ from django.core.files.storage import default_storage
 from django.http import HttpResponseRedirect
 from rest_framework import generics, permissions
 from rest_framework.response import Response
-
+from rest_framework.exceptions import ValidationError
 from .models import Devise
 from .serializers import DeviseSerializer
-
-# class DeviseCreateView(generics.CreateAPIView):
-#     queryset = Devise.objects.all()
-#     serializer_class = DeviseSerializer
-#     #permission_classes = [permissions.IsAuthenticated]
-#     http_method_names = ['post']
-#     def perform_create(self, serializer):
-#         file = self.request.FILES.get("file")
-#         if file:
-#             if file.content_type == 'text/csv':
-#                 df = pd.read_csv(file, delimiter=',')
-#             elif file.content_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-#                 df = pd.read_excel(file)
-#             else:
-#                 return JsonResponse({"error": "Unsupported file type"}, status=400)
-#
-#             for column in df.columns:
-#                 if column != "DateTime":
-#                     for index, value in df[column].items():
-#                         serializer.save(
-#                             pair=column,
-#                             ratio=value,
-#                             date=df.loc[index, "DateTime"]
-#                         )
-#         else:
-#             return JsonResponse({"error": "No file provided"}, status=400)
 
 class DeviseListView(generics.ListAPIView):
     queryset = Devise.objects.all()
     serializer_class = DeviseSerializer
     http_method_names = ['get']
+
+    def filter_queryset(self, queryset):
+        """
+        Filtre la liste des devises en fonction des paramètres de la requête.
+        """
+        # Récupère les paramètres de la requête
+        filter_value = self.request.query_params.get('filter', None)
+        id_value = self.request.query_params.get('id', None)
+        pair_value = self.request.query_params.get('pair', None)
+
+        if id_value:
+            if not id_value.isdigit():
+                raise ValidationError({'id': 'Le paramètre id doit être un entier valide.'})
+            queryset = queryset.filter(id=id_value)
+
+        if filter_value:
+            queryset = queryset.filter(name__icontains=filter_value)  # Exemple avec un champ "name"
+
+        if pair_value:
+            queryset = queryset.filter(pair=pair_value)
+
+        return queryset
 
 @csrf_exempt
 def upload_excel(request):

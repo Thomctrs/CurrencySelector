@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 
-// Enregistrement des composants nécessaires
+// Enregistrement des composants nécessaires pour Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,12 +23,21 @@ ChartJS.register(
 );
 
 const ChartComponent = ({ data, label }) => {
+  // Vérifiez si des données sont disponibles
+  if (!data || data.length === 0) {
+    return (
+      <p className="text-center text-gray-500 mt-4">
+        Pas de données disponibles pour la devise sélectionnée.
+      </p>
+    );
+  }
+
   const chartData = {
-    labels: data.map((item) => item.date), // Les dates pour l'axe des X
+    labels: data.map((item) => item.date), // Les dates pour l'axe X
     datasets: [
       {
-        label: `Évolution de ${label}`,
-        data: data.map((item) => item.value), // Les valeurs pour l'axe des Y
+        label: `Évolution de ${label}`, // Légende de la courbe
+        data: data.map((item) => item.ratio), // Les ratios pour l'axe Y
         fill: false,
         backgroundColor: '#4bc0c0',
         borderColor: '#36a2eb',
@@ -60,9 +69,13 @@ const ChartComponent = ({ data, label }) => {
   };
 
   return (
-    <div className="chart-container">
-      <h3>Graphique des cours pour {label}</h3>
-      <Line data={chartData} options={options} />
+    <div className="bg-white shadow-md rounded-lg p-6 mt-4">
+      <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+        Évolution du Taux de Change - {label}
+      </h3>
+      <div className="overflow-x-auto">
+        <Line data={chartData} options={options} />
+      </div>
     </div>
   );
 };
