@@ -72,7 +72,7 @@ function App() {
 
       <Container maxWidth="lg" sx={{ marginTop: 4 }}>
         <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={14} md={4}>
             <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
               <CardContent>
                 <Typography variant="h5" gutterBottom>
@@ -85,8 +85,18 @@ function App() {
               </CardContent>
             </Card>
           </Grid>
+          <Grid item xs={12} md={6}>
+            <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  Charger un Fichier CSV
+                </Typography>
+                <CSVUploader onUploadSuccess={handleUploadSuccess} />
+              </CardContent>
+            </Card>
+          </Grid>
 
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} >
             {selectedCurrency && (
               <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
                 <CardContent>
@@ -99,16 +109,7 @@ function App() {
             )}
           </Grid>
 
-          <Grid item xs={12}>
-            <Card sx={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}>
-              <CardContent>
-                <Typography variant="h5" gutterBottom>
-                  Charger un Fichier CSV
-                </Typography>
-                <CSVUploader onUploadSuccess={handleUploadSuccess} />
-              </CardContent>
-            </Card>
-          </Grid>
+         
         </Grid>
       </Container>
 

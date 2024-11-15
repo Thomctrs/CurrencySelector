@@ -25,57 +25,85 @@ ChartJS.register(
 const ChartComponent = ({ data, label }) => {
   // Vérifiez si des données sont disponibles
   if (!data || data.length === 0) {
-    return (
-      <p className="text-center text-gray-500 mt-4">
-        Pas de données disponibles pour la devise sélectionnée.
-      </p>
-    );
+    return <p>Pas de données disponibles pour la devise sélectionnée.</p>;
   }
 
+  // Fonction pour calculer la tendance
+  const calculateTrendline = (data) => {
+    const n = data.length;
+    if (n === 0) return [];
+
+    const sumX = data.reduce((sum, _, i) => sum + i, 0);
+    const sumY = data.reduce((sum, item) => sum + item.ratio, 0);
+    const sumXY = data.reduce((sum, item, i) => sum + i * item.ratio, 0);
+    const sumX2 = data.reduce((sum, _, i) => sum + i * i, 0);
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+
+    return data.map((_, i) => slope * i + intercept);
+  };
+
+  const trendlineData = calculateTrendline(data);
+
+  // Données du graphique
   const chartData = {
-    labels: data.map((item) => item.date), // Les dates pour l'axe X
+    labels: data.map((item) => item.date),
     datasets: [
+        {
+            label: 'Tendance',
+            data: trendlineData,
+            fill: false,
+            borderColor: '#ff6384',
+            borderDash: [10, 5], // Ligne pointillée
+            pointRadius: 0, // Pas de points pour la tendance
+            tension: 0, // Ligne droite
+          },
       {
-        label: `Évolution de ${label}`, // Légende de la courbe
-        data: data.map((item) => item.ratio), // Les ratios pour l'axe Y
+        label: `Évolution de ${label}`,
+        data: data.map((item) => item.ratio),
         fill: false,
         backgroundColor: '#4bc0c0',
+        pointRadius: 0,
         borderColor: '#36a2eb',
+        tension: 0.1, // Ligne légèrement arrondie
       },
+      
     ],
   };
 
+  // Options du graphique
   const options = {
     responsive: true,
     plugins: {
       legend: {
+        position: 'top',
         labels: {
-          color: '#333', // Couleur des labels de la légende
+          color: '#333',
         },
       },
     },
     scales: {
       x: {
         ticks: {
-          color: '#555', // Couleur des ticks de l'axe des X
+          color: '#555',
         },
       },
       y: {
         ticks: {
-          color: '#555', // Couleur des ticks de l'axe des Y
+          color: '#555',
+        },
+        grid: {
+          drawBorder: false,
+          color: '#e5e5e5',
         },
       },
     },
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 mt-4">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
-        Évolution du Taux de Change - {label}
-      </h3>
-      <div className="overflow-x-auto">
-        <Line data={chartData} options={options} />
-      </div>
+    <div className="chart-container">
+      <Line data={chartData} options={options} />
     </div>
   );
 };
