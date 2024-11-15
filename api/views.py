@@ -26,8 +26,8 @@ class DeviseListView(generics.ListAPIView):
         # Récupère les paramètres de la requête
         filter_value = self.request.query_params.get('filter', None)
         id_value = self.request.query_params.get('id', None)
+        pair_value = self.request.query_params.get('pair', None)
 
-        # Applique les filtres
         if id_value:
             if not id_value.isdigit():
                 raise ValidationError({'id': 'Le paramètre id doit être un entier valide.'})
@@ -35,6 +35,9 @@ class DeviseListView(generics.ListAPIView):
 
         if filter_value:
             queryset = queryset.filter(name__icontains=filter_value)  # Exemple avec un champ "name"
+
+        if pair_value:
+            queryset = queryset.filter(pair=pair_value)
 
         return queryset
 
