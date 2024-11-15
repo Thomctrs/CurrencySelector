@@ -5,10 +5,17 @@ const CSVUploader = ({ onUploadSuccess }) => {
   const [file, setFile] = useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    console.log("Fichier sélectionné :", selectedFile);
+    setFile(selectedFile);
   };
 
   const handleUpload = async () => {
+    if (!file || !file.name.endsWith('.csv')) {
+      alert('Veuillez sélectionner un fichier CSV');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('file', file);
 
@@ -20,7 +27,7 @@ const CSVUploader = ({ onUploadSuccess }) => {
       alert('CSV uploadé avec succès');
     } catch (error) {
       console.error('Erreur de téléchargement:', error);
-      alert('Échec du téléchargement du CSV');
+      alert(`Échec du téléchargement du CSV : ${error.response?.data || error.message}`);
     }
   };
 
@@ -29,7 +36,7 @@ const CSVUploader = ({ onUploadSuccess }) => {
       <h3>Charger un fichier CSV</h3>
       <input 
         type="file" 
-        accept=".csv" 
+        accept=".csv,.xls,.xlsx" 
         onChange={handleFileChange} 
         className="csv-input"
       />
