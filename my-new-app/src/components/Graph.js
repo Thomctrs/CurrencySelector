@@ -25,7 +25,11 @@ ChartJS.register(
 const ChartComponent = ({ data, label }) => {
   // Vérifiez si des données sont disponibles
   if (!data || data.length === 0) {
-    return <p>Pas de données disponibles pour la devise sélectionnée.</p>;
+    return (
+      <p className="text-center text-gray-500 mt-4">
+        Pas de données disponibles pour la devise sélectionnée.
+      </p>
+    );
   }
 
   const chartData = {
@@ -65,8 +69,13 @@ const ChartComponent = ({ data, label }) => {
   };
 
   return (
-    <div className="chart-container">
-      <Line data={chartData} options={options} />
+    <div className="bg-white shadow-md rounded-lg p-6 mt-4">
+      <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+        Évolution du Taux de Change - {label}
+      </h3>
+      <div className="overflow-x-auto">
+        <Line data={chartData} options={options} />
+      </div>
     </div>
   );
 };
