@@ -14,6 +14,9 @@ services:
       POSTGRES_PASSWORD: example
       POSTGRES_USER: admin
       POSTGRES_DB: currency
+    
+    networks:
+      - app_network
 
 
   adminer:
@@ -21,24 +24,17 @@ services:
     restart: always
     ports:
       - 8080:8080
+    networks:
+      - app_network
   
 
-  web:
-    build: .
-    container_name: django_app
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app  # Montre le code source local dans le conteneur pour faciliter le développement
-    depends_on:
-      - db 
-    environment:
-      - DEBUG=1
-      - DATABASE_URL=postgres://user:password@db:5432/currency  # Connexion à la base de données
-
+  
     
 
 
 volumes:
   db_data:
     driver: local
+
+networks:
+  app_network:

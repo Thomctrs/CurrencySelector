@@ -2,7 +2,7 @@ init:
 	pip install -r requirements.txt
 
 launch-database:
-	docker compose up -d 
+	docker compose up -d
 
 wait-for-database:
 	until docker compose exec db pg_isready -U postgres; do \
@@ -10,10 +10,10 @@ wait-for-database:
 		sleep 2; \
 	done
 
-launch-server: wait-for-database
+launch-server:
 	python3 manage.py runserver
 
-start: launch-database wait-for-database launch-server
+start: launch-database 
 
 stop:
 	docker compose down
