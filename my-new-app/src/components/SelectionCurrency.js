@@ -2,7 +2,7 @@ import React from 'react';
 
 const CurrencySelector = ({ currencies, onSelectCurrency }) => {
   // Extraire uniquement les devises (par exemple "SEK" ou "GBP")
-  const uniqueCurrencies = [...new Set(currencies.map((item) => item.pair.split('_')[0]))];
+  const uniqueCurrencies = [...new Set(currencies.map((item) => item.pair))];
 
   return (
     <div className="currency-selector">
