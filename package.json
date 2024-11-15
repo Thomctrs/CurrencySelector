@@ -7,7 +7,9 @@
         "test": "react-scripts test"
     },
     "dependencies": {
+        "chart.js": "^4.4.6",
         "react": "^17.0.2",
+        "react-chartjs-2": "^5.2.0",
         "react-dom": "^17.0.2",
         "react-scripts": "^4.0.3"
     }
