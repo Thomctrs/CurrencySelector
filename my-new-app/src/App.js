@@ -34,7 +34,7 @@ function App() {
     setSelectedCurrency(currency);
     // Récupère les données de la devise sélectionnée
     axios
-      .get(`http://localhost:8000/api/devise/${currency}`)
+      .get(`http://localhost:8000/api/devise?pair=${currency}`)
       .then((response) => setCurrencyData(response.data))
       .catch((error) => console.error('Erreur lors de la récupération des données:', error));
   };
