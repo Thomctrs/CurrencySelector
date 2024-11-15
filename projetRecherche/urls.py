@@ -21,4 +21,5 @@ from api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/devise', views.DeviseListView.as_view(), name='devise-list'),
+    path('api/devise/create', views.upload_and_save_data, name='devise-create'),
 ]
