@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'currency',
         'USER': 'admin',
         'PASSWORD': 'example',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '',
     }
 }
