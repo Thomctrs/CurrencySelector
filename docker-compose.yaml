@@ -45,6 +45,7 @@ services:
     networks:
       - app_network
 
+# npm install react-scripts --save
     
 
 
