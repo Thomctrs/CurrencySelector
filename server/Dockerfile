@@ -2,7 +2,6 @@ FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
 
-# Installer les dépendances nécessaires
 WORKDIR /app
 RUN pip install --upgrade pip
 COPY ./requirements.txt /app/requirements.txt
