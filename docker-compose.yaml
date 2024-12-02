@@ -53,10 +53,7 @@ services:
     depends_on:
       - server
     networks:
-      - app_network
-
-# npm install react-scripts --save
-    
+      - app_network    
 
 
 volumes:

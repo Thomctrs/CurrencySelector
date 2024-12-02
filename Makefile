@@ -1,5 +1,5 @@
 init:
-	pip install -r requirements.txt
+	pip install -r server/requirements.txt
 
 start: 
 	docker compose up

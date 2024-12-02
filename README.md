@@ -23,6 +23,11 @@ Voici les commandes à exécuter :
     `py manage.py runserver` OU `python manage.py runserver` (selon votre OS)
 
 
+#### Visualisation
+Vous trouverez notre application à l'adresse suivante :  
+    http://localhost:3000
+
+
 ### Arrêt de l'application
 Pour arrêter l'application il suffit d'exécuter :  
     `make stop`
