@@ -17,9 +17,11 @@ Si vous n'avez pas make d'installé, vous pouvez exécuter :
 Pour lancer l'application, il faut exécuter cette commande :  
     `make start`
 
-Si vous n'avez pas make, voici la commande à exécuter :  
+Ou, si vous n'avez pas make, voici la commande à exécuter :  
     `docker compose up`  
 
+
+Si vous êtes sous Windows, pensez à lancer votre application Docker Desktop !  
 
 #### 👀 Visualisation
 Vous trouverez notre application à l'adresse suivante :  
