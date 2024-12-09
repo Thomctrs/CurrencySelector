@@ -6,31 +6,31 @@ Réalisée par :
 
 ## 🛠️ Fonctionnement
 ### 📦 Installation
-Pour installer les dépendances et bibliothèques requises, vous pouvez exécuter la commande suivante :
+Pour installer les dépendances et bibliothèques requises, vous pouvez exécuter la commande suivante :  
     `make init`
 
-Si vous n'avez pas make d'installé, vous pouvez exécuter :
+Si vous n'avez pas make d'installé, vous pouvez exécuter :  
     `pip install -r server/requirements.txt`
 
 
 ### 🚀 Lancement de l'application 
-Pour lancer l'application, il faut exécuter cette commande :
+Pour lancer l'application, il faut exécuter cette commande :  
     `make start`
 
-Si vous n'avez pas make, voici la commande à exécuter :
+Si vous n'avez pas make, voici la commande à exécuter :  
     `docker compose up`  
 
 
 #### 👀 Visualisation
-Vous trouverez notre application à l'adresse suivante :
+Vous trouverez notre application à l'adresse suivante :  
     http://localhost:3000
 
 
 ### 🛑 Arrêt de l'application
-Pour arrêter l'application il suffit d'exécuter :
+Pour arrêter l'application il suffit d'exécuter :  
     `make stop`
 
-Si vous n'avez pas make :
+Si vous n'avez pas make :  
     `docker compose down`
 
 
