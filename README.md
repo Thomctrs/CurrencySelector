@@ -4,6 +4,9 @@ Réalisée par :
     - 👨‍💻 Baptiste JULIENNE  
     - 👨‍💻 Noé CHABANON  
 
+Vous pouvez visualiser notre code à l'adresse suivante :  
+https://github.com/noech373/projet_recherche  
+
 ## 🛠️ Fonctionnement
 ### 📦 Installation
 Pour installer les dépendances et bibliothèques requises, vous pouvez exécuter la commande suivante :  
