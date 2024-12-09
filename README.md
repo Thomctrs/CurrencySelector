@@ -10,17 +10,15 @@ Pour installer les dépendances et bibliothèques requises, vous pouvez exécute
     `make init`
 
 Si vous n'avez pas make d'installé, vous pouvez exécuter :  
-    `pip install -r requirements.txt`
+    `pip install -r server/requirements.txt`
 
 
 ### Lancement de l'application 
 Pour lancer l'application, il faut exécuter cette commande :  
     `make start`
 
-Si vous n'avez pas make, vous aurez besoin de 2 terminaux pour lancer la base de données et le serveur.
-Voici les commandes à exécuter :  
+Si vous n'avez pas make, voici la commande à exécuter
     `docker compose up`  
-    `py manage.py runserver` OU `python manage.py runserver` (selon votre OS)
 
 
 #### Visualisation
@@ -31,6 +29,9 @@ Vous trouverez notre application à l'adresse suivante :
 ### Arrêt de l'application
 Pour arrêter l'application il suffit d'exécuter :  
     `make stop`
+
+Si vous n'avez pas make :
+    `docker compose down`
 
 
 ## Choix techniques
